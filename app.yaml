@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cit262-groupx
+  name: cit262-groupall
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cit262-groupx
+      app: cit262-groupall
   template:
     metadata:
       labels:
-        app: cit262-groupx
+        app: cit262-groupall
     spec:
       containers:
-      - name: cit262-groupx
-        image: gcr.io/potent-galaxy-274115/cit262-groupx
+      - name: cit262-groupall
+        image: gcr.io/potent-galaxy-274115/cit262-groupall
         ports:
         - containerPort: 80
         resources:
@@ -34,10 +34,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cit262-groupx-service
+  name: cit262-groupall-service
 spec:
   selector:
-    app: cit262-groupx
+    app: cit262-groupall
   ports:
     - protocol: TCP
       port: 80
@@ -46,10 +46,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cit262-groupx-loadbalancer
+  name: cit262-groupall-loadbalancer
 spec:
   selector:
-    app: cit262-groupx
+    app: cit262-groupall
   type: LoadBalancer
   ports:
   - port: 80
